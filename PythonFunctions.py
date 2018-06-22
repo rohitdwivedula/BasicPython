@@ -4,7 +4,7 @@
 def prime_or_not (n):
     if(n==1):
         return 0
-    else if(n==2):
+    elif(n==2):
         return 1
     i=3
     while(i<=math.sqrt(n)+1):
@@ -36,7 +36,16 @@ def is_perfect(n):
 3. Write a Python function that checks whether a passed string is a palindrome or
 not.
 '''
-
+def isPalindrome(text):
+    i = 0
+    j = len(text) - 1
+    while(i<j):
+        if(text[i] == text[j]):
+            i+=1
+            j-=1
+        else:
+            return 0
+    return 1
 
 '''
 4. Write a Python function that prints the first n rows of Pascal’s triangle.
