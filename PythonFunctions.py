@@ -1,5 +1,9 @@
 # Functions Assignment
-# Write a Python function that takes a number as a parameter and check the number is prime or not.
+from functools import reduce
+
+'''
+1. Write a Python function that takes a number as a parameter and check the number is prime or not.
+'''
 
 def prime_or_not (n):
     if(n==1):
@@ -12,6 +16,7 @@ def prime_or_not (n):
             return 0
         i+=1
     return 1
+
 '''
 2. Write a Python function to check if a number is perfect or not. A perfect
 number is a positive integer that is equal to the sum of all its positive divisors,
@@ -50,8 +55,15 @@ def isPalindrome(text):
 '''
 4. Write a Python function that prints the first n rows of Pascal’s triangle.
 '''
-
-
+def printPascalTriangle(n):
+    columns = 2 * len(str(11**(n-1))) - 1
+    for i in range(0,n):
+        val = str(11**i)
+        empty_columns = int((columns+1)/2 - (len(val)))
+        print(" "*empty_columns, end="")
+        for k in range(0, len(val)):
+            print(val[k], end=" ")
+        print(" ")
 
 '''
 5. Write a Python program that accepts a hyphen-separated sequence of words
@@ -75,6 +87,9 @@ def Fahr_to_Cels(fahr):
 7. Rewrite the solution to the previous problem to use lambda functions.
 '''
 
+fahr = lambda cels: ((9.00/5.00) * cels) + 32.0
+cels = lambda fahr: (fahr - 32.00)*(5.00/9.00)
+
 '''
 8. Implement the functions map(), filter() and reduce() with user-defined
 functions. As an additional exercise, modify these functions to return
@@ -85,6 +100,13 @@ generators instead of lists, to make them more efficient.
 9. Write a function to compute n C r and n P r. Try using reduce() to solve this
 problem.
 '''
+
+def nPr(n,r):
+    answer = reduce((lambda x,y: x*y), range(1,n+1))
+    answer /= reduce((lambda x,y: x*y), range(1, n-r+1))
+    return answer
+def nCr(n,r):
+    return reduce((lambda x,y: x*y), range(n-r+1,n+1))/reduce((lambda x,y: x*y), range(1, r+1))
 
 '''
 10. Write a decorator that measures the running time of the decorated functions,
