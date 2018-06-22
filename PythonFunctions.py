@@ -72,6 +72,11 @@ them alphabetically. Sample Items: green-red-yellow-black-white
 Expected Result: black-green-red-white-yellow
 '''
 
+def sort_spl(text):
+    print(reduce((lambda x, y: x+'-'+y),sorted(text.split('-'))))
+
+sort_spl("green-red-yellow-black-white")
+
 
 '''
 6. Write a Python script to convert the Celsius scale to the Fahrenheit scale, and
