@@ -1,6 +1,6 @@
 # Functions Assignment
 from functools import reduce
-
+import time
 '''
 1. Write a Python function that takes a number as a parameter and check the number is prime or not.
 '''
@@ -114,3 +114,21 @@ i.e. the time taken for the function from the moment it is called to the point
 where it finishes executing. Print this time. The inbuilt time module can come in
 handy.
 '''
+
+def time_it(func):
+    def inner():
+        t1 = time.time()
+        func()
+        t2 = time.time()
+        print(str(t2-t1))
+    return inner
+
+# the above function is the decorator function. Let's use it to time the boring function
+
+@time_it
+def boring():
+    print("I'm bored with life")
+boring()
+
+# Okay. So this works. But this decorater thingy only works when we have no arguements for the functions we are
+# sending to decorate.
