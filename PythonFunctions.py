@@ -140,6 +140,16 @@ def myFilter(myFunc, myList):
             output.append(elements)
     return output
 
+# Now let's use generators:
+def myMapGen(myFunction, input_list):
+    for i in range(0, len(input_list)):
+        yield myFunction(input_list[i])
+
+def myFilterGen(myFunc, myList):
+    for element in myList:
+        if myFunc(element):
+            yield element
+
 '''
 9. Write a function to compute n C r and n P r. Try using reduce() to solve this
 problem.
